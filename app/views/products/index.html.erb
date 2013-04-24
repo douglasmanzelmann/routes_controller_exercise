@@ -1,4 +1,32 @@
+<% first_product = Product.first %>
+<h2>Hello World</h2>
 <h2> I AMA View </h2>
 <p>
   Find me in <%= Rails.root.join("app", "views", "products", __FILE__ ) %>
 </p>
+
+<p>
+  <%= first_product.name %> costs <%= first_product.price %>
+</p>
+<p>
+  The seller of this product is <%= first_product.user.name %>
+</p>
+
+<% most_expensive = Product.order("price DESC").first %>
+<% cheapest = Product.order("price ASC").first %>
+<p>
+  The most expensive product is <%= most_expensive.name %>,
+  which costs $<%= most_expensive.price %>
+</p>
+<p>
+  The least expensive product is <%= cheapest %>,
+  which costs $<%= cheapest %>
+</p>
+
+<% specific_cost = Product.where("price > 200").where("price < 275").first %>
+<p>
+  A product between $200 and $275 is <%= specific_cost.name %>, 
+  which costs $<%= specific_cost.price %>
+</p>
+
+
