@@ -1,0 +1,11 @@
+<h2>Create View</h2>
+<% product = Product.new(params[:product]) %>
+<% product.save %>
+
+<% if product.save %>
+  <h2>Your product saved</h2>
+  Your product looks like <%= product.inspect %>
+<% else %>
+  <h2>Your product did not save</h2>
+  Here are the error messages: <%= product.errors.full_messages %>
+<% end %>
